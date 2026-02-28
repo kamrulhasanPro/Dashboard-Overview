@@ -8,6 +8,7 @@ import { BiHelpCircle } from "react-icons/bi";
 import { BiLogOut } from "react-icons/bi";
 import MyLink from "./MyLink";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
+import { useAuth } from "../../Hooks/useAuth";
 
 const menuItems = [
   {
@@ -49,10 +50,11 @@ const generalItems = [
     path: "/settings",
   },
   { icon: <BiHelpCircle size={18} />, label: "Help", path: "/help" },
-  { icon: <BiLogOut size={18} />, label: "Logout", path: "/logout" },
 ];
 
 const Sidebar = () => {
+  const { logout } = useAuth();
+
   return (
     <div className=" flex flex-col gap-6">
       {/* logo */}
@@ -90,6 +92,16 @@ const Sidebar = () => {
           {generalItems.map((item, i) => (
             <MyLink item={item} key={i} />
           ))}
+
+          <button
+            className="flex items-center gap-3 px-3 py-2 font-medium transition-all text-secondary-content cursor-pointer hover:text-red-400"
+            onClick={() => logout()}
+          >
+            <span>
+              <BiLogOut size={18} />
+            </span>
+            <span>Logout</span>
+          </button>
         </menu>
       </div>
     </div>
