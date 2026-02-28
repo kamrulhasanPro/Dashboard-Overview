@@ -7,7 +7,7 @@ const DashboardLayout = () => {
   return (
     <div className="flex p-4 gap-4 min-h-screen max-w-7xl mx-auto">
       {/* sidebar */}
-      <aside className="w-64 bg-base-200 rounded-xl">
+      <aside className="w-12 sm:w-64 duration-800 bg-base-200 rounded-xl">
         <Sidebar />
       </aside>
 
