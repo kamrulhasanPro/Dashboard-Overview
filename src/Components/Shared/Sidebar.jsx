@@ -1,5 +1,4 @@
 import React from "react";
-import { MdDashboard } from "react-icons/md";
 import { BsListTask } from "react-icons/bs";
 import { BsCalendar3 } from "react-icons/bs";
 import { IoAnalyticsSharp } from "react-icons/io5";
@@ -8,10 +7,11 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { BiHelpCircle } from "react-icons/bi";
 import { BiLogOut } from "react-icons/bi";
 import MyLink from "./MyLink";
+import { TbLayoutDashboardFilled } from "react-icons/tb";
 
 const menuItems = [
   {
-    icon: <MdDashboard size={18} />,
+    icon: <TbLayoutDashboardFilled size={18} />,
     label: "Dashboard",
     path: "/",
     badge: null,

@@ -11,14 +11,14 @@ const DashboardLayout = () => {
         <Sidebar />
       </aside>
 
-      <div className="w-full">
+      <div className="w-full space-y-4">
         {/* navbar */}
         <div className=" bg-base-200 rounded-xl">
           <TopBar />
         </div>
 
         {/* main */}
-        <main>
+        <main className="bg-base-200 rounded-xl min-h-[calc(100vh-87px-48px)] p-4">
           <Outlet />
         </main>
       </div>

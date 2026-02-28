@@ -7,14 +7,14 @@ const MyLink = ({ item }) => {
       <NavLink
         to={item?.path}
         className={({ isActive }) =>
-          `flex items-center gap-3 px-3 py-2 text-sm font-medium transition-all relative
+          `flex items-center gap-3 px-3 py-2 font-medium transition-all relative text-md
     ${isActive ? "before:absolute before:inset-0 before:w-1 before:bg-accent before:rounded-r-full text-neutral" : "text-secondary-content"}`
         }
       >
         {({ isActive }) => (
           <>
             <span className={`${isActive && "text-accent"}`}>{item?.icon}</span>
-            <span className="">{item?.label}</span>
+            <span className={`${isActive && "font-bold"}`}>{item?.label}</span>
             {item?.badge && (
               <span className="badge badge-primary badge-sm ml-auto">
                 {item?.badge}
