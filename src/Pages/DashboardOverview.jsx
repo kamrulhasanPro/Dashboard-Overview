@@ -5,6 +5,7 @@ import { useFetch } from "../Hooks/useFetch";
 import StatCard from "../Components/Cards/StatCard";
 import ProjectAnalyticsChart from "../Components/Charts/ProjectAnalyticsChart";
 import ReminderCard from "../Components/Cards/ReminderCard";
+import ProjectList from "../Components/Sections/ProjectList";
 const getStatsData = (overview) => [
   {
     title: "Total Users",
@@ -29,21 +30,30 @@ const getStatsData = (overview) => [
   },
 ];
 const DashboardOverview = () => {
+  // state overview
   const { data, loading, error } = useFetch(
     "https://task-api-eight-flax.vercel.app/api/overview",
   );
 
+  // analytics
   const {
     data: analytics,
     loading: analyticsLoader,
     error: analyticsError,
   } = useFetch("https://task-api-eight-flax.vercel.app/api/analytics");
 
-  if (loading || analyticsLoader) {
+  // products
+  const {
+    data: products,
+    loading: productsLoading,
+    error: productsError,
+  } = useFetch("https://task-api-eight-flax.vercel.app/api/products");
+
+  if (loading || analyticsLoader || productsLoading) {
     return <p>Loading...</p>;
   }
 
-  if (error) {
+  if (error || productsError || analyticsError) {
     return <p>error</p>;
   }
 
@@ -82,19 +92,19 @@ const DashboardOverview = () => {
         </section>
 
         {/* grid layout */}
-        <div className="grid grid-cols-12 gap-4">
+        <div className="grid grid-cols-12  gap-4">
           {/* Row 1 */}
           {/* Analytics */}
-          <div className="col-span-6">
+          <div className="col-span-6 ">
             <ProjectAnalyticsChart analytics={analytics} />
           </div>
           {/* Reminders */}
-          <div className="col-span-3">
+          <div className="col-span-3 ">
             <ReminderCard />
           </div>
           {/* Project List */}
-          <div className="col-span-3"> 
-            
+          <div className="col-span-3">
+            <ProjectList products={products} />
           </div>
 
           {/* Row 2 */}
