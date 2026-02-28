@@ -9,6 +9,7 @@ import ProjectList from "../Components/Sections/ProjectList";
 import TeamTable from "../Components/Sections/TeamTable";
 import ProjectProgressChart from "../Components/Charts/ProjectProgressChart";
 import TimeTracker from "../Components/Sections/TimeTracker";
+
 const getStatsData = (overview) => [
   {
     title: "Total Users",
@@ -32,27 +33,24 @@ const getStatsData = (overview) => [
     trend: "On Discuss",
   },
 ];
+
 const DashboardOverview = () => {
-  // state overview
   const { data, loading, error } = useFetch(
     "https://task-api-eight-flax.vercel.app/api/overview",
   );
 
-  // analytics
   const {
     data: analytics,
     loading: analyticsLoader,
     error: analyticsError,
   } = useFetch("https://task-api-eight-flax.vercel.app/api/analytics");
 
-  // products
   const {
     data: products,
     loading: productsLoading,
     error: productsError,
   } = useFetch("https://task-api-eight-flax.vercel.app/api/products");
 
-  // team members
   const {
     data: members,
     loading: membersLoading,
@@ -64,16 +62,14 @@ const DashboardOverview = () => {
   }
 
   if (error || productsError || analyticsError || membersError) {
-    return <p>error</p>;
+    return <p>Error</p>;
   }
 
   const stats = getStatsData(data);
-  console.log(analytics);
+
   return (
     <div className="space-y-4">
-      {/* head title and other */}
-      <div className="flex items-center justify-between">
-        {/* title */}
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="space-y-1">
           <h1 className="text-3xl font-bold">Dashboard</h1>
           <p className="text-secondary-content text-sm">
@@ -81,8 +77,7 @@ const DashboardOverview = () => {
           </p>
         </div>
 
-        {/* import btn */}
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           <Button
             variant="primary"
             icon={<AiOutlinePlus />}
@@ -92,42 +87,35 @@ const DashboardOverview = () => {
         </div>
       </div>
 
-      {/* body content */}
       <div className="space-y-4">
-        {/* statsCard */}
-        <section className="grid grid-cols-4 gap-4">
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {stats.map((stat, i) => (
             <StatCard key={i} stat={stat} />
           ))}
         </section>
 
-        {/* grid layout */}
-        <div className="grid grid-cols-12 gap-4 ">
-          {/* Row 1 */}
-          {/* Analytics */}
-          <div className="col-span-6 ">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+          <div className="lg:col-span-6">
             <ProjectAnalyticsChart analytics={analytics} />
           </div>
-          {/* Reminders */}
-          <div className="col-span-3 ">
+
+          <div className="lg:col-span-3">
             <ReminderCard />
           </div>
-          {/* Project List */}
-          <div className="col-span-3">
+
+          <div className="lg:col-span-3">
             <ProjectList products={products} />
           </div>
 
-          {/* Row 2 */}
-          {/* Team Collaboration */}
-          <div className="col-span-5">
+          <div className="lg:col-span-5 overflow-x-auto">
             <TeamTable members={members} />
           </div>
-          {/* Project Progress */}
-          <div className="col-span-4">
+
+          <div className="lg:col-span-4">
             <ProjectProgressChart />
           </div>
-          {/* Time Tracker */}
-          <div className="col-span-3">
+
+          <div className="lg:col-span-3">
             <TimeTracker />
           </div>
         </div>

@@ -14,9 +14,9 @@ const MyLink = ({ item }) => {
         {({ isActive }) => (
           <>
             <span className={`${isActive && "text-accent"}`}>{item?.icon}</span>
-            <span className={`${isActive && "font-bold"}`}>{item?.label}</span>
+            <span className={`${isActive && "font-bold"} hidden sm:block`}>{item?.label}</span>
             {item?.badge && (
-              <span className="badge badge-primary badge-sm ml-auto">
+              <span className="badge badge-primary badge-sm ml-auto hidden sm:block">
                 {item?.badge}
               </span>
             )}

@@ -64,12 +64,12 @@ const Sidebar = () => {
           alt="connection-status-on"
         />
 
-        <span className="text-xl font-semibold">Donezo</span>
+        <span className="text-xl font-semibold hidden sm:block">Donezo</span>
       </div>
 
       {/* menu section*/}
       <div>
-        <p className="text-[12px] font-semibold text-base-300 px-4 pb-2">
+        <p className="text-[12px] font-semibold text-base-300 px-4 pb-2 hidden sm:block">
           MENU
         </p>
 
@@ -82,7 +82,7 @@ const Sidebar = () => {
 
       {/* general menu section*/}
       <div>
-        <p className="text-[12px] font-semibold text-base-300 px-4 pb-2">
+        <p className="text-[12px] font-semibold text-base-300 px-4 pb-2 hidden sm:block">
           GENERAL
         </p>
 
