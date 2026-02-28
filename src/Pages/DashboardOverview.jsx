@@ -6,6 +6,7 @@ import StatCard from "../Components/Cards/StatCard";
 import ProjectAnalyticsChart from "../Components/Charts/ProjectAnalyticsChart";
 import ReminderCard from "../Components/Cards/ReminderCard";
 import ProjectList from "../Components/Sections/ProjectList";
+import TeamTable from "../Components/Sections/TeamTable";
 const getStatsData = (overview) => [
   {
     title: "Total Users",
@@ -49,11 +50,18 @@ const DashboardOverview = () => {
     error: productsError,
   } = useFetch("https://task-api-eight-flax.vercel.app/api/products");
 
-  if (loading || analyticsLoader || productsLoading) {
+  // team members
+  const {
+    data: members,
+    loading: membersLoading,
+    error: membersError,
+  } = useFetch("https://task-api-eight-flax.vercel.app/api/users");
+
+  if (loading || analyticsLoader || productsLoading || membersLoading) {
     return <p>Loading...</p>;
   }
 
-  if (error || productsError || analyticsError) {
+  if (error || productsError || analyticsError || membersError) {
     return <p>error</p>;
   }
 
@@ -108,7 +116,10 @@ const DashboardOverview = () => {
           </div>
 
           {/* Row 2 */}
-          <div className="col-span-5"> {/* Team Collaboration */}</div>
+          {/* Team Collaboration */}
+          <div className="col-span-5">
+            <TeamTable members={members} />
+          </div>
           <div className="col-span-4"> {/* Project Progress */}</div>
           <div className="col-span-3"> {/* Time Tracker */}</div>
         </div>
