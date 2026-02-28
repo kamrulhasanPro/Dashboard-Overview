@@ -1,8 +1,46 @@
 import React from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import Button from "../Components/Shared/Button";
-
+import { useFetch } from "../Hooks/useFetch";
+import StatCard from "../Components/Cards/StatCard";
+const getStatsData = (overview) => [
+  {
+    title: "Total Users",
+    value: overview?.totalUsers,
+    trend: "Increased from last month",
+    variant: "dark",
+  },
+  {
+    title: "Active Users",
+    value: overview?.activeUsers,
+    trend: "Increased from last month",
+  },
+  {
+    title: "Revenue",
+    value: `$${(overview?.revenue / 1000).toFixed(1)}k`,
+    trend: "Increased from last month",
+  },
+  {
+    title: "Growth",
+    value: `${overview?.growth}%`,
+    trend: "On Discuss",
+  },
+];
 const DashboardOverview = () => {
+  const { data, loading, error } = useFetch(
+    "https://task-api-eight-flax.vercel.app/api/overview",
+  );
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>error</p>;
+  }
+
+  const stats = getStatsData(data);
+
   return (
     <div className="">
       {/* head title and other */}
@@ -27,7 +65,14 @@ const DashboardOverview = () => {
       </div>
 
       {/* body content */}
-      <div></div>
+      <div>
+        {/* statsCard */}
+        <section className="grid grid-cols-4 gap-4">
+          {stats.map((stat, i) => (
+            <StatCard key={i} stat={stat} />
+          ))}
+        </section>
+      </div>
     </div>
   );
 };
