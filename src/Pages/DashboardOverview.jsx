@@ -7,6 +7,7 @@ import ProjectAnalyticsChart from "../Components/Charts/ProjectAnalyticsChart";
 import ReminderCard from "../Components/Cards/ReminderCard";
 import ProjectList from "../Components/Sections/ProjectList";
 import TeamTable from "../Components/Sections/TeamTable";
+import ProjectProgressChart from "../Components/Charts/ProjectProgressChart";
 const getStatsData = (overview) => [
   {
     title: "Total Users",
@@ -120,7 +121,10 @@ const DashboardOverview = () => {
           <div className="col-span-5">
             <TeamTable members={members} />
           </div>
-          <div className="col-span-4"> {/* Project Progress */}</div>
+          {/* Project Progress */}
+          <div className="col-span-4">
+            <ProjectProgressChart/>
+          </div>
           <div className="col-span-3"> {/* Time Tracker */}</div>
         </div>
       </div>
