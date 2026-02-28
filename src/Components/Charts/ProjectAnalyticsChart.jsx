@@ -109,7 +109,11 @@ const ProjectAnalyticsChart = ({ analytics }) => {
     },
   };
   return (
-    <Bar className="bg-white p-4 rounded-xl" data={data} options={options} />
+    <div className="bg-white p-4 rounded-xl">
+      <p className="text-sm font-medium">Project Analytics</p>
+
+      <Bar data={data} options={options} />
+    </div>
   );
 };
 

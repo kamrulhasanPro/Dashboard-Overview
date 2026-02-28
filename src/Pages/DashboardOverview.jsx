@@ -4,6 +4,7 @@ import Button from "../Components/Shared/Button";
 import { useFetch } from "../Hooks/useFetch";
 import StatCard from "../Components/Cards/StatCard";
 import ProjectAnalyticsChart from "../Components/Charts/ProjectAnalyticsChart";
+import ReminderCard from "../Components/Cards/ReminderCard";
 const getStatsData = (overview) => [
   {
     title: "Total Users",
@@ -72,7 +73,7 @@ const DashboardOverview = () => {
       </div>
 
       {/* body content */}
-      <div>
+      <div className="space-y-4">
         {/* statsCard */}
         <section className="grid grid-cols-4 gap-4">
           {stats.map((stat, i) => (
@@ -83,11 +84,18 @@ const DashboardOverview = () => {
         {/* grid layout */}
         <div className="grid grid-cols-12 gap-4">
           {/* Row 1 */}
+          {/* Analytics */}
           <div className="col-span-6">
             <ProjectAnalyticsChart analytics={analytics} />
           </div>
-          <div className="col-span-3"> {/* Reminders */}</div>
-          <div className="col-span-3"> {/* Project List */}</div>
+          {/* Reminders */}
+          <div className="col-span-3">
+            <ReminderCard />
+          </div>
+          {/* Project List */}
+          <div className="col-span-3"> 
+            
+          </div>
 
           {/* Row 2 */}
           <div className="col-span-5"> {/* Team Collaboration */}</div>
