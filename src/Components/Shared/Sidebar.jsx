@@ -100,7 +100,7 @@ const Sidebar = () => {
             <span>
               <BiLogOut size={18} />
             </span>
-            <span>Logout</span>
+            <span className="hidden sm:block">Logout</span>
           </button>
         </menu>
       </div>
