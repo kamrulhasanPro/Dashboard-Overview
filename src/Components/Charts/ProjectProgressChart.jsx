@@ -55,7 +55,7 @@ const ProjectProgressChart = () => {
   };
 
   return (
-    <div className="bg-white p-4 rounded-xl">
+    <div className="bg-white p-4 rounded-xl h-full">
       <p className="text-sm font-medium">Project Progress</p>
       <Doughnut data={data} options={options} plugins={[centerTextPlugin]} />
       <div className="flex items-center justify-center gap-4 ">

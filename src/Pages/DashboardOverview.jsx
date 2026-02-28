@@ -8,6 +8,7 @@ import ReminderCard from "../Components/Cards/ReminderCard";
 import ProjectList from "../Components/Sections/ProjectList";
 import TeamTable from "../Components/Sections/TeamTable";
 import ProjectProgressChart from "../Components/Charts/ProjectProgressChart";
+import TimeTracker from "../Components/Sections/TimeTracker";
 const getStatsData = (overview) => [
   {
     title: "Total Users",
@@ -101,7 +102,7 @@ const DashboardOverview = () => {
         </section>
 
         {/* grid layout */}
-        <div className="grid grid-cols-12  gap-4">
+        <div className="grid grid-cols-12 gap-4 ">
           {/* Row 1 */}
           {/* Analytics */}
           <div className="col-span-6 ">
@@ -123,9 +124,12 @@ const DashboardOverview = () => {
           </div>
           {/* Project Progress */}
           <div className="col-span-4">
-            <ProjectProgressChart/>
+            <ProjectProgressChart />
           </div>
-          <div className="col-span-3"> {/* Time Tracker */}</div>
+          {/* Time Tracker */}
+          <div className="col-span-3">
+            <TimeTracker />
+          </div>
         </div>
       </div>
     </div>

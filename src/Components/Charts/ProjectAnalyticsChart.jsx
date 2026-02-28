@@ -110,7 +110,7 @@ const ProjectAnalyticsChart = ({ analytics }) => {
     },
   };
   return (
-    <div className="bg-white p-4 rounded-xl">
+    <div className="bg-white p-4 rounded-xl h-full">
       <p className="text-sm font-medium">Project Analytics</p>
 
       <Bar data={data} options={options} />

@@ -4,7 +4,7 @@ import TeamMemberRow from "../Cards/TeamMembarRow";
 
 const TeamTable = ({ members }) => {
   return (
-    <div className="bg-white rounded-2xl p-4">
+    <div className="bg-white rounded-2xl p-4 h-full">
       {/* title + New button */}
       <div className="flex items-center justify-between mb-4">
         <p className="text-sm font-medium">Team Collaboration</p>
