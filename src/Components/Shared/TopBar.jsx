@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineMail } from "react-icons/ai";
 import { BsBell } from "react-icons/bs";
 
 const TopBar = () => {
+  const searchRef = useRef(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.ctrlKey && e.key === "f") {
+        e.preventDefault();
+        searchRef.current?.focus();
+      }
+    };
+    
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
     <div className="p-2 flex items-center justify-between gap-4">
-      <label className="input outline-none rounded-full border-none">
+      <label
+        ref={searchRef}
+        className="input outline-none rounded-full border-none"
+      >
         <AiOutlineSearch size={30} />
         <input type="text" placeholder="Search task" />
         <kbd className="kbd kbd-sm">⌘F</kbd>
