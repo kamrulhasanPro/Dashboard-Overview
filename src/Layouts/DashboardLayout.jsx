@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router";
 import Sidebar from "../Components/Shared/Sidebar";
-import Navbar from "../Components/Shared/Navbar";
+import TopBar from "../Components/Shared/TopBar";
 
 const DashboardLayout = () => {
   return (
@@ -11,11 +11,11 @@ const DashboardLayout = () => {
         <Sidebar />
       </aside>
 
-      <div>
+      <div className="w-full">
         {/* navbar */}
-        <nav>
-          <Navbar />
-        </nav>
+        <div className=" bg-base-200 rounded-xl">
+          <TopBar />
+        </div>
 
         {/* main */}
         <main>
