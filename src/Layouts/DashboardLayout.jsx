@@ -5,9 +5,9 @@ import TopBar from "../Components/Shared/TopBar";
 
 const DashboardLayout = () => {
   return (
-    <div className="flex p-4 gap-4 min-h-screen">
+    <div className="flex p-4 gap-4 min-h-screen max-w-7xl mx-auto">
       {/* sidebar */}
-      <aside className="w-54 bg-base-200 rounded-xl">
+      <aside className="w-64 bg-base-200 rounded-xl">
         <Sidebar />
       </aside>
 
@@ -18,7 +18,7 @@ const DashboardLayout = () => {
         </div>
 
         {/* main */}
-        <main className="bg-base-200 rounded-xl min-h-[calc(100vh-87px-48px)] p-4">
+        <main className="bg-base-200 rounded-xl min-h-[calc(100vh-87px-48px)] p-4 overflow-y-auto">
           <Outlet />
         </main>
       </div>

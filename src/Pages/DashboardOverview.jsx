@@ -3,6 +3,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import Button from "../Components/Shared/Button";
 import { useFetch } from "../Hooks/useFetch";
 import StatCard from "../Components/Cards/StatCard";
+import ProjectAnalyticsChart from "../Components/Charts/ProjectAnalyticsChart";
 const getStatsData = (overview) => [
   {
     title: "Total Users",
@@ -31,7 +32,13 @@ const DashboardOverview = () => {
     "https://task-api-eight-flax.vercel.app/api/overview",
   );
 
-  if (loading) {
+  const {
+    data: analytics,
+    loading: analyticsLoader,
+    error: analyticsError,
+  } = useFetch("https://task-api-eight-flax.vercel.app/api/analytics");
+
+  if (loading || analyticsLoader) {
     return <p>Loading...</p>;
   }
 
@@ -40,9 +47,9 @@ const DashboardOverview = () => {
   }
 
   const stats = getStatsData(data);
-
+  console.log(analytics);
   return (
-    <div className="">
+    <div className="space-y-4">
       {/* head title and other */}
       <div className="flex items-center justify-between">
         {/* title */}
@@ -72,6 +79,21 @@ const DashboardOverview = () => {
             <StatCard key={i} stat={stat} />
           ))}
         </section>
+
+        {/* grid layout */}
+        <div className="grid grid-cols-12 gap-4">
+          {/* Row 1 */}
+          <div className="col-span-6">
+            <ProjectAnalyticsChart analytics={analytics} />
+          </div>
+          <div className="col-span-3"> {/* Reminders */}</div>
+          <div className="col-span-3"> {/* Project List */}</div>
+
+          {/* Row 2 */}
+          <div className="col-span-5"> {/* Team Collaboration */}</div>
+          <div className="col-span-4"> {/* Project Progress */}</div>
+          <div className="col-span-3"> {/* Time Tracker */}</div>
+        </div>
       </div>
     </div>
   );

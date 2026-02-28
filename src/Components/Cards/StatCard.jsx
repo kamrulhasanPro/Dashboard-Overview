@@ -6,7 +6,7 @@ const StatCard = ({ stat }) => {
 
   return (
     <div
-      className={`rounded-2xl p-5 flex flex-col gap-4 transition-colors
+      className={`rounded-2xl p-5 flex flex-col gap-4 transition-colors duration-300
       ${isLight ? "bg-white text-neutral hover:bg-primary/5" : "bg-gradient-to-br from-[#1a7a4a] to-[#2db36e] text-white hover:from-[#155e3a] hover:to-[#259e5e] "}`}
     >
       {/* title & arrow icon */}
@@ -27,9 +27,8 @@ const StatCard = ({ stat }) => {
         {value}
       </p>
 
-      {/*  */}
+      {/* trend */}
       <div className="flex items-center gap-1 text-xs">
-        {/* small icon */}
         <span className={isLight ? "text-accent" : "text-yellow-100"}>
           {trend}
         </span>
